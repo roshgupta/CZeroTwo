@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "CZeroTwo",
+  "description": "This extension will help us to find out the carbon emission caused by loading a website.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  }
+}

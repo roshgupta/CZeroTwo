@@ -4,6 +4,13 @@
   "description": "This extension will help us to find out the carbon emission caused by loading a website.",
   "version": "1.0",
   "action": {
-    "default_popup": "index.html"
-  }
+    "default_popup": "./popup/index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ]
 }

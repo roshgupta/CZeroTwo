@@ -21,7 +21,7 @@ function App() {
       <AuthContext.Provider value={{ auth, setAuth }}>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/greenServer" element={<GreenServer />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

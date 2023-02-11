@@ -10,16 +10,16 @@ function Use() {
         setUrl(e.target.value)
     }
     const formSubmit=(e)=>{
-        e.preventDeafult()
-      console.log(url)
+        e.preventDefault()
+    
     axios.get(`http://localhost:5000/userlink/${url}`,{
       headers:{
         access_token:localStorage.getItem('access_token')
       }
     })
     .then((res)=>{
-      console.log(res)
-      setData(res)
+      console.log(res.data)
+      setData(res.data)
     })
     .catch((err)=>{
       console.log(err)

@@ -3,8 +3,10 @@ const mongoose = require('mongoose')
 
 const connectToDB = () => {
 
+    const uri=process.env.MONGO_URI||'mongodb://localhost:27017/czerotwo'
+
     mongoose.set("strictQuery", false);
-    mongoose.connect('mongodb://localhost:27017/czerotwo', {
+    mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });

@@ -1,5 +1,5 @@
 const express=require("express");
-const dontenv=require("dotenv");
+require('dotenv').config()
 const connectToDB=require('./models/connectToMongoDB')
 const UserRoutes=require('./routes/user')
 const UserlinkRoutes=require('./routes/userlink')

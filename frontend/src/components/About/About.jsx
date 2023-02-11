@@ -16,55 +16,26 @@ const About = () => {
           src={
             "https://ik.imagekit.io/niceedu/1_kNDAfV_ZY.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676135825503"
           }
-          name
+          name={"Roshan Gupta"}
+          title={"Developer and Designer"}
+          email={"gpta.duke.rohan.1219@gmail.com"}
         />
-        <div className="card">
-          <img
-            src="https://ik.imagekit.io/niceedu/1_kNDAfV_ZY.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676135825503"
-            alt="Jane"
-          />
-          <div className="container">
-            <h2>Roshan Gupta</h2>
-            <p className="title">Designer</p>
-            <p></p>
-            <p>jane@example.com</p>
-            <p>
-              <button className="button">Contact</button>
-            </p>
-          </div>
-        </div>
-
-        <div className="card">
-          <img
-            src="https://ik.imagekit.io/niceedu/3_34Lt-vrG3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676135825529"
-            alt="Mike"
-          />
-          <div className="container">
-            <h2>Sharique Nadim</h2>
-            <p className="title">Designer</p>
-            <p></p>
-            <p>mike@example.com</p>
-            <p>
-              <button className="button">Contact</button>
-            </p>
-          </div>
-        </div>
-
-        <div className="card">
-          <img
-            src="https://ik.imagekit.io/niceedu/2_qZDvU6iIO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676135825619"
-            alt="John"
-          />
-          <div className="container">
-            <h2>Aneesh Kulkarni</h2>
-            <p className="title">Designer</p>
-            <p></p>
-            <p>john@example.com</p>
-            <p>
-              <button className="button">Contact</button>
-            </p>
-          </div>
-        </div>
+        <Card
+          src={
+            "https://ik.imagekit.io/niceedu/3_34Lt-vrG3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676135825529"
+          }
+          name={"Sharique Nadim"}
+          title={"Developer and Designer"}
+          email={"sharique@gmail.com"}
+        />
+        <Card
+          src={
+            "https://ik.imagekit.io/niceedu/2_qZDvU6iIO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1676135825619"
+          }
+          name={"Aneesh Kulkarni"}
+          title={"Developer and Designer"}
+          email={"aneesh@gmail.com"}
+        />
       </CardContainer>
     </Container>
   );

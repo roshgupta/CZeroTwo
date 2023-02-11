@@ -1,9 +1,17 @@
-import React from "react";
+import React,{useContext} from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 const Dashboard = ({ ComponentToMount }) => {
+
+  const {auth}=useContext(AuthContext)
+  const navigate = useNavigate();
+  if(auth==false){
+    navigate('/login')
+  }
+
   return (
     <Container>
       <SideBar>

@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
 import styled from "styled-components";
 import IndividualWebsites from "../Dashboard/IndividualWebsites";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const AllLInks = () => {
   const [datas, setDatas] = useState(null);
   const [individual, setIndividual] = useState(null);
+
+  const navigate = useNavigate();
+  const {auth}= useContext(AuthContext)
+  if(auth==false){
+    navigate('/login')
+  }
 
   useEffect(() => {
     axios

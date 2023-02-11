@@ -111,14 +111,12 @@ ul {
   border-radius: 6px;
   border: 2px solid #f0e9d6;
   font-weight: bold;
-}
-.view-more a {
-  width: 100%;
-
+  cursor: pointer;
   color: rgba(2, 93, 91, 1);
   text-align: center;
   font-size: 14px;
 }
+
 .url-link {
   text-decoration: underline;
 }

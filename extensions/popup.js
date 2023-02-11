@@ -44,8 +44,16 @@ chrome.storage.local.get(["visited"]).then((result) => {
   }
   template += `
   <li class="view-more">
-  <a href="#">View More</a>
+  <div>View More</div>
   </li>`
   const websites = document.getElementById("websites");
   websites.innerHTML = template;
+  const viewMore = document.getElementsByClassName("view-more")[0];
+  viewMore.addEventListener("click", () => {
+    //open a url in new tab
+    chrome.tabs.create({ url: "https://www.google.com" });
+    // enter url for the extension website
+    // send all data to backend
+
+  })
 });

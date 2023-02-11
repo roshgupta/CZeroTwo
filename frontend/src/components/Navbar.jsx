@@ -92,6 +92,9 @@ const LoginSignup = styled.div`
     margin: 0px 8px;
     border-radius: 8px;
   }
+  a:hover {
+    background-color: #44b98c;
+  }
 `;
 
 export default Navbar;

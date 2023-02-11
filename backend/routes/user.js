@@ -6,7 +6,7 @@ const Userlink=require('../models/userlink')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 
-router.post('/signup',async(req,res)=>{
+router.post('/signup',async(req,res,next)=>{
     const {username,email,password}=req.body
         const salt=bcrypt.genSaltSync(10)
         const hash=bcrypt.hashSync(password,salt)

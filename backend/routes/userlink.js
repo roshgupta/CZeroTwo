@@ -44,16 +44,18 @@ catch(err){
 }
 })
 
-router.post('/',isAuthorised,async(req,res,next)=>{
+router.post('/',async(req,res,next)=>{
     try{
-    const id=req.user.id
-    
+    // const id=req.user.id
+    const id="63e826018c0ddd53dfe1f463"
     const user=await User.findById(id);
+    console.log(user)
     const ulinkid=user.userlink.toHexString()
     const userlink= await Userlink.findById(ulinkid);
     // change here later
     const {visited}= req.body
     //visited here is an array
+    console.log("workingggg post")
     const linkbody=await Link.create({visited})
 
     userlink.visit.push(linkbody._id)
@@ -122,6 +124,9 @@ router.get('/top',isAuthorised,async(req,res,next)=>{
             }
         }
     }
+
+    arr.sort((a, b) => parseInt(a.value) > parseInt(b.value) ? -1 : 1);
+
     res.status(200).json({arr})
 }
 catch(err){

@@ -4,12 +4,12 @@ import styled from "styled-components";
 import { AuthContext } from "../App";
 
 function Navbar() {
-  const { auth,setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
-const logout=()=>{
-  setAuth(false)
-  localStorage.removeItem("access_token")
-}
+  const logout = () => {
+    setAuth(false);
+    localStorage.removeItem("access_token");
+  };
 
   return (
     <StyledNavbar>
@@ -26,9 +26,7 @@ const logout=()=>{
         <Link className="nav-links" to="">
           Dashboard
         </Link>
-        <Link className="nav-links" to="/greenServer">
-          Green Servers
-        </Link>
+
         <Link className="nav-links" to="">
           About
         </Link>
@@ -39,12 +37,13 @@ const logout=()=>{
           <Link to="/signup">Signup</Link>
         </LoginSignup>
       )}
-      {auth&&(
+      {auth && (
         <LoginSignup>
-        <Link onClick={logout} to='/login'>Logout</Link>
+          <Link onClick={logout} to="/login">
+            Logout
+          </Link>
         </LoginSignup>
-      )
-      }
+      )}
     </StyledNavbar>
   );
 }
@@ -91,7 +90,7 @@ const Links = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40%;
+  width: 35%;
   .nav-links:hover {
     text-decoration: underline;
     transition: all 0.3s ease-in-out;

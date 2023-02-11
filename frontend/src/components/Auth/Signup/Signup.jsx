@@ -2,6 +2,7 @@ import React,{useState,useContext} from 'react'
 import './Signup.css'
 import axios from "axios"
 import { AuthContext } from '../../../App'
+import { useNavigate } from "react-router-dom"
 function Signup() {
 
   const [username,setUsername]=useState("")
@@ -9,6 +10,7 @@ function Signup() {
   const [password,setPassword]=useState("")
 
   const {auth,setAuth}=useContext(AuthContext)
+  const navigate=useNavigate()
 
   const changeUsername=(e)=>{
     setUsername(e.target.value)
@@ -31,6 +33,7 @@ const formSubmit=(e)=>{
     if(res.data.success==true){
       localStorage.setItem('access_token',res.data.access_token)
       setAuth(true)
+      navigate('/')
     }
 
 

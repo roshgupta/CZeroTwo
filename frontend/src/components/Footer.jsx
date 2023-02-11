@@ -32,9 +32,11 @@ const StyledFooter = styled.footer`
   width: 100%;
   background-color: #2e2e2e;
   color: white;
+  padding-top: 16px;
 `;
 const Container = styled.div`
   display: flex;
+  padding: 0px 16px;
 `;
 const Resources = styled.div`
   margin-left: auto;

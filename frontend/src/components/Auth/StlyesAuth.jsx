@@ -5,8 +5,8 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100%;
-  min-width: 100%;
+  height: 100%;
+  width: 100%;
   padding: 64px 0px;
 `;
 
@@ -19,6 +19,7 @@ export const StyledForm = styled.form`
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   border: 2px solid rgba(255, 255, 255, 0.1);
   padding: 50px 35px;
+
   * {
     font-family: "Poppins", sans-serif;
     color: #27292b;

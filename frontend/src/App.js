@@ -9,6 +9,7 @@ import GreenServer from './components/DashboardPages/GreenServer'
 import Recent from './components/DashboardPages/Recent'
 import AllLInks from './components/DashboardPages/AllLinks'
 import Use from './components/DashboardPages/Use'
+import About from './components/About/About'
 import { useState } from 'react'
 import React from 'react'
 export const AuthContext = React.createContext(null)
@@ -25,6 +26,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard ComponentToMount={<AllLInks />} />} />
+          <Route path="/about" element={<About />} />
           <Route path="/greenServer" element={<Dashboard ComponentToMount={<GreenServer />} />} />
           <Route path="/recent" element={<Dashboard ComponentToMount={<Recent />} />} />
           <Route path="/use" element={<Dashboard ComponentToMount={<Use />} />} />

@@ -21,11 +21,11 @@ function Navbar() {
           </Link>
         </Logo>
 
-        <Link className="nav-links" to="">
+        <Link className="nav-links" to="/">
           Dashboard
         </Link>
 
-        <Link className="nav-links" to="">
+        <Link className="nav-links" to="/about">
           About
         </Link>
       </Links>

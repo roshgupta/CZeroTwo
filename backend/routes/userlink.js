@@ -6,15 +6,16 @@ const Link=require('../models/Link')
 
 router.get('/all/:id',async(req,res)=>{
 
-    const id=req.params
+    const {id}=req.params
     const user=await User.findById(id)
-    const userlink=await Userlink.findById(user.userLink)
-
-    const visited=userlink.visited
+    const ulinkid=user.userlink.toHexString()
+    const userlink=await Userlink.findById(ulinkid)
+    const visited=userlink.visit
     const arr=[]
 
     for(let vis of visited){
-        const link=await Link.findById(vis)
+        const link=await Link.findById(vis.toHexString())
+        console.log(link)
         arr.push(link)
     }
 
@@ -22,38 +23,39 @@ router.get('/all/:id',async(req,res)=>{
 
 })
 
-router.post('/id',async(req,res)=>{
+router.post('/:id',async(req,res)=>{
 
     const {id}=req.params
     const user=await User.findById(id);
-    const ulinkid=user.userLink;
-
+    const ulinkid=user.userlink.toHexString()
     const userlink= await Userlink.findById(ulinkid);
-
-    //change here later
+    // change here later
     const {visited}= req.body
-    const linkbody=await Link.insertMany({visited});
+    //visited here is an array
+    const linkbody=await Link.create({visited})
 
     userlink.visit.push(linkbody._id)
-    userlink.save();
+    await userlink.save();
 
+    res.status(200).json({"success":true,message:"done"})
 })
 
 router.get('/:date/:id',async(req,res)=>{
     const {date,id}=req.params;
 
     const user=await User.findById(id)
-    const userlink=await Userlink.findById(user.userlink)
+    const ulinkid=user.userlink.toHexString()
+    const userlink=await Userlink.findById(ulinkid)
 
-    const visited=userlink.visited;
-
-    
+    const visited=userlink.visit
+   
     for(let vis of visited){
 
-        const link=await Link.findById(vis)
-        if(link.date===date){
-            res.status(200).json({"success":true,payload:link})
-        }
+        const link=await Link.findById(vis.toHexString())
+        console.log(link.date)
+        // if(link.date===date){
+        //     res.status(200).json({"success":true,payload:link})
+        // }
 
     }
     res.status(200).json({success:false,message:"No such data"})

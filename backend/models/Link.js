@@ -4,7 +4,8 @@ const schema=mongoose.Schema
 const LinksSchema=new schema({
     
     date:{
-        type:Date
+        type:Date,
+        default: Date.now()
     },
     visited:{
         type:[{

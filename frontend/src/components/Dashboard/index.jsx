@@ -1,51 +1,40 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import styled from "styled-components";
 import IndividualWebsites from "./IndividualWebsites";
+import axios from 'axios'
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const datas = [
-    {
-      url: "www.facebook.com",
-      value: 3434,
-      carbon: 232,
-    },
-    {
-      url: "www.google.com",
-      value: 3434,
-      carbon: 232,
-    },
-    {
-      url: "www.orkut.com",
-      value: 3434,
-      carbon: 232,
-    },
-    {
-      url: "www.facebook.com",
-      value: 3434,
-      carbon: 232,
-    },
-    {
-      url: "www.google.com",
-      value: 3434,
-      carbon: 232,
-    },
-    {
-      url: "www.orkut.com",
-      value: 3434,
-      carbon: 232,
-    },
-  ];
+  const [datas,setDatas]=useState([])
   const indi = {
     url: "www.orkut.com",
     value: 3434,
     carbon: 232,
   };
+
+  useEffect(()=>{
+    axios.get('http://localhost:5000/userlink/top',{
+      headers:{
+        access_token:localStorage.getItem('access_token')
+      }
+    })
+    .then((res)=>{
+      console.log(res)
+      setDatas(res.data.arr)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+
+  },[])
+
+
   return (
     <Container>
       <SideBar>
         <Tabs>Profile</Tabs>
-        <Tabs>Recent History</Tabs>
-        <Tabs>Ranked websites</Tabs>
+        <Link to='/recent'>Recent History</Link>
+        <Link to='/use'>Domain Emission</Link>
       </SideBar>
       <MainContent>
         <Header>
@@ -61,7 +50,6 @@ const Dashboard = () => {
           </Overall>
         </Header>
         <HeadText>Your carbon footprint history</HeadText>
-        <HeadSmallText>Date: </HeadSmallText>
         <WebsitesData>
           {datas.map((data) => (
             <IndividualWebsites

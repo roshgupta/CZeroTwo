@@ -10,10 +10,15 @@ router.get('/test',isAuthorised,(req,res,next)=>{
     console.log(req.user.id)
     res.send("test")
 })
+router.get('/dum',(req,res)=>{
+    console.log("inside dum get")
+    res.send("hi")
+})
 
 router.post('/dum',(req,res)=>{
     console.log(req.body)
-    res.send("hi")
+    console.log("inside dum post")
+    res.json({message:"h1"})
 })
 
 router.get('/all',isAuthorised,async(req,res,next)=>{
@@ -41,7 +46,7 @@ catch(err){
 
 router.post('/',isAuthorised,async(req,res,next)=>{
     try{
-        const id=req.user.id
+    const id=req.user.id
     
     const user=await User.findById(id);
     const ulinkid=user.userlink.toHexString()

@@ -57,26 +57,25 @@ chrome.windows.onRemoved.addListener((windowId) => {
   
   // Make an API request here
   console.log(uservisit)
-  fetch('http://localhost:5000/userlink/dum', {
-  method: 'POST',
-  body: {
-    visited:uservisit
-  },
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  }
-  })
-  .then((res)=>{
-    return res.json()
-  })
-  .then((data)=>{
-    console.log(data)
-  })
-  .catch((err)=>{
-    console.log(err)
-  })
+  const token=chrome.storage.local.get("access_token")
+  console.log(token)
 
-  // after that clear local storage
+  fetch("http://localhost:5000/userlink/dum", {
+    method: "POST",
+     
+    body: JSON.stringify({
+        visited:uservisit
+    }),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+.then(response => response.json())
+.then(json => console.log(json))
+.catch((err)=>{
+  console.log(err)
+})
+
   chrome.storage.local.remove('visited')
 
 });

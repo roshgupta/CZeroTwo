@@ -1,11 +1,10 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../App";
 
 function Navbar() {
-
-  const {auth}=useContext(AuthContext)
+  const { auth } = useContext(AuthContext);
 
   return (
     <StyledNavbar>
@@ -29,10 +28,12 @@ function Navbar() {
           Contact
         </Link>
       </Links>
-      {!auth && (<LoginSignup>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Signup</Link>
-      </LoginSignup>)}
+      {!auth && (
+        <LoginSignup>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+        </LoginSignup>
+      )}
     </StyledNavbar>
   );
 }

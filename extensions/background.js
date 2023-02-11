@@ -30,7 +30,7 @@ chrome.webRequest.onCompleted.addListener(
       }
     }
     if(f==1){
-      vis.push({url:curr_url,value:0})
+      vis.push({url:curr_url,value:curr_value})
     }
 
     console.log(vis)
@@ -39,3 +39,10 @@ chrome.webRequest.onCompleted.addListener(
   { urls: ["<all_urls>"] },
   ["responseHeaders"]
 );
+
+chrome.windows.onRemoved.addListener((windowId) => {
+  console.log("Closed window: " + windowId);
+  
+  // Make an API request here
+
+});

@@ -1,27 +1,28 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './components/Home'
+// import Home from './components/Home'
+import Dashboard from './components/Dashboard'
 import Login from './components/Auth/Login/Login'
 import Signup from './components/Auth/Signup/Signup'
 import { useState } from 'react'
 import React from 'react'
-export const AuthContext= React.createContext(null)
+export const AuthContext = React.createContext(null)
 
 function App() {
 
-  const [auth,setAuth]=useState(false)
+  const [auth, setAuth] = useState(false)
 
 
   return (
     <BrowserRouter>
-    <AuthContext.Provider value={{auth,setAuth}}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
+      <AuthContext.Provider value={{ auth, setAuth }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
 
       </AuthContext.Provider>
       <Footer />

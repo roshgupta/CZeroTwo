@@ -29,6 +29,7 @@ function Footer() {
 }
 
 const StyledFooter = styled.footer`
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   width: 100%;
   background-color: #2e2e2e;
   color: white;

@@ -9,7 +9,7 @@ import {
   StyledInput,
   StyledButton,
   Social,
-} from "../StlyesAuth";
+} from "../StylesAuth";
 import { AuthContext } from "../../../App";
 
 function Login() {

@@ -12,7 +12,7 @@ import {
   StyledInput,
   StyledButton,
   Social,
-} from "../StlyesAuth";
+} from "../StylesAuth";
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

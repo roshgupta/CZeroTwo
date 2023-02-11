@@ -8,7 +8,7 @@ import Signup from './components/Auth/Signup/Signup'
 import GreenServer from './components/DashboardPages/GreenServer'
 import Recent from './components/DashboardPages/Recent'
 import AllLInks from './components/DashboardPages/AllLinks'
-import Use from './components/Use/Use'
+import Use from './components/DashboardPages/Use'
 import { useState } from 'react'
 import React from 'react'
 export const AuthContext = React.createContext(null)

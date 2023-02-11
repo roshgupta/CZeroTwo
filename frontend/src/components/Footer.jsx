@@ -12,9 +12,11 @@ function Footer() {
           </Link>
         </Logo>
         <Links>
-          <Link to="">Home</Link>
-          <Link to="">Dashboard</Link>
-          <Link to="">About</Link>
+          <Link to="/">Dashboard</Link>
+          <Link to="/about">About</Link>
+          <Link to="/greenServer">Green Servers</Link>
+          <Link to="/recent">Recent History</Link>
+          <Link to="/use">Domain Emission</Link>
         </Links>
         <Resources>
           <Link to="">View on Github</Link>
@@ -73,7 +75,7 @@ const Links = styled.div`
   a {
     color: white;
     text-decoration: none;
-    margin: 6px 0px;
+    margin: 3px 0px;
     &:hover {
       text-decoration: underline;
     }

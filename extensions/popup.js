@@ -10,8 +10,9 @@ chrome.storage.local.get(["visited"]).then((result) => {
       totalData += e.value;
     }
   });
+  let totalCarbonValue = ((totalData * 1024.45483) * (10 ** -11)).toFixed(5);
   const totalElement = document.getElementsByClassName("total-usages-value")[0];
-  totalElement.innerHTML = totalData;
+  totalElement.innerHTML = totalCarbonValue;
   for (let i = visitedArrayData.length - 1; i >= 0; i--) {
     if (visitedArrayData[i] && visitedArrayData[i] != "default"
       && visitedArrayData[i] != "undefined" && visitedArrayData[i] != undefined) {
@@ -31,7 +32,7 @@ chrome.storage.local.get(["visited"]).then((result) => {
         <div class="carbon-emisson">
           Carbon emission equivalent to :
           <span class="carbon-emisson-value">
-          ${((visitedArrayData[i].value) / 95325).toFixed(2)}
+          ${((visitedArrayData[i].value * 1024.45483) * (10 ** -11)).toFixed(5)}
           </span><span>
             gm
           </span>

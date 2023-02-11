@@ -7,12 +7,14 @@ const Link=require('../models/Link')
 const isAuthorised=require('../utils/isAuthorised')
 
 router.get('/test',isAuthorised,(req,res,next)=>{
+    console.log(req.user.id)
     res.send("test")
 })
 
-router.get('/all/:id',isAuthorised,async(req,res,next)=>{
-
-    const {id}=req.params
+router.get('/all',isAuthorised,async(req,res,next)=>{
+    try{
+    
+    const id=req.user.id
     const user=await User.findById(id)
     const ulinkid=user.userlink.toHexString()
     const userlink=await Userlink.findById(ulinkid)
@@ -26,12 +28,18 @@ router.get('/all/:id',isAuthorised,async(req,res,next)=>{
     }
 
     res.status(200).json({success:true,payload:arr})
+}
+catch(err){
+    next(err)
+}
 
 })
 
-router.post('/:id',async(req,res,next)=>{
+router.post('/',isAuthorised,async(req,res,next)=>{
 
-    const {id}=req.params
+    try{
+        const id=req.user.id
+    
     const user=await User.findById(id);
     const ulinkid=user.userlink.toHexString()
     const userlink= await Userlink.findById(ulinkid);
@@ -44,11 +52,16 @@ router.post('/:id',async(req,res,next)=>{
     await userlink.save();
 
     res.status(200).json({success:true,message:"done"})
+    }
+    catch(err){
+        next(err)
+    }
 })
 
-router.get('/:date/:id',async(req,res,next)=>{
-    const {date,id}=req.params;
-
+router.get('/:date',isAuthorised,async(req,res,next)=>{
+    try{
+    const {date}=req.params;
+    const id=req.user.id
     const user=await User.findById(id)
     const ulinkid=user.userlink.toHexString()
     const userlink=await Userlink.findById(ulinkid)
@@ -65,6 +78,10 @@ router.get('/:date/:id',async(req,res,next)=>{
 
     }
     res.status(200).json({success:false,message:"No such data"})
+}
+catch(err){
+    next(err)
+}
 })
 
 

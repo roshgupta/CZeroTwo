@@ -12,6 +12,7 @@ router.post('/test',(req,res)=>{
 })
 
 router.post('/signup',async(req,res,next)=>{
+    try{
     const {username,email,password}=req.body
         const salt=bcrypt.genSaltSync(10)
         const hash=bcrypt.hashSync(password,salt)
@@ -28,9 +29,14 @@ router.post('/signup',async(req,res,next)=>{
         res
         .status(200)
         .json({success:true,access_token:token})
+    }
+    catch(err){
+        next(err)
+    }
 })
 
 router.post('/login',async(req,res,next)=>{
+    try{
       const {email,password}=req.body
 
       const user =await User.findOne({email})
@@ -51,6 +57,10 @@ router.post('/login',async(req,res,next)=>{
       res
       .status(200)
       .json({success:true,access_token:token})
+    }
+    catch(err){
+        next(err)
+    }
   })
 
 

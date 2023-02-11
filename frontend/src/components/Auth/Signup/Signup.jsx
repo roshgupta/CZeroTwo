@@ -1,13 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import './Signup.css'
 import axios from "axios"
-
+import { AuthContext } from '../../../App'
 function Signup() {
 
   const [username,setUsername]=useState("")
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
 
+  const {auth,setAuth}=useContext(AuthContext)
 
   const changeUsername=(e)=>{
     setUsername(e.target.value)
@@ -27,7 +28,12 @@ const formSubmit=(e)=>{
     password
   })
   .then((res)=>{
-    console.log(res)
+    if(res.data.success==true){
+      localStorage.setItem('access_token',res.data.access_token)
+      setAuth(true)
+    }
+
+
   })
   .catch((err)=>{
     console.log(err)

@@ -3,12 +3,12 @@ const jwt=require('jsonwebtoken')
 
 const isAuthorised=(req,res,next)=>{
 
-    console.log(req.cookies)
-    if(req.cookies==undefined){
+    console.log(req.headers)
+    if(req.headers.access_token==undefined){
         res.status(200).json({"message":"no cookies"})
         return
     }
-    const token=req.cookies.access_token
+    const token=req.headers.access_token
     console.log(token)
 
     const verify=jwt.verify(token,"secret key",(err,user)=>{

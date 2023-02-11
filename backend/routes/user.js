@@ -25,12 +25,9 @@ router.post('/signup',async(req,res,next)=>{
         })
         const user=await newUser.save()
         const token= jwt.sign({id:user._id},"secret key")
-        res.cookie("access_token",token,{
-          httpOnly:true,
-          secure:false  
-        })
+        res
         .status(200)
-        .json(user)
+        .json({success:true,access_token:token})
 })
 
 router.post('/login',async(req,res,next)=>{
@@ -51,11 +48,9 @@ router.post('/login',async(req,res,next)=>{
           res.send('no authenticated')
       }
       const token= jwt.sign({id:user._id},"secret key")
-      res.cookie("access_token",token,{
-        httpOnly:true  
-      })
+      res
       .status(200)
-      .json({username:user.username,email:user.email})
+      .json({success:true,access_token:token})
   })
 
 

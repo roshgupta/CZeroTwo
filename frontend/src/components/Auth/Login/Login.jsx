@@ -1,9 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
+import axios from 'axios'
 import './Login.css'
-
+import { AuthContext } from '../../../App'
 function Login() {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+
+  const {auth,setAuth}=useContext(AuthContext)
 
   const changeEmail=(e)=>{
     setEmail(e.target.value)
@@ -13,10 +16,24 @@ function Login() {
   }
 const formSubmit=(e)=>{
   e.preventDefault()
-  console.log(email,password)
+  axios.post('http://localhost:5000/user/login',{
+    email,
+    password
+  })
+  .then((res)=>{
+    if(res.data.success==true){
+      localStorage.setItem('access_token',res.data.access_token)
+      setAuth(true)
+    }
+
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
 }
   return (
     <div>
+      {!auth&& <h1>HEl</h1> }
       <form onSubmit={formSubmit}>
         <h3>Login Here</h3>
 

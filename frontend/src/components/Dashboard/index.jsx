@@ -15,7 +15,9 @@ const Dashboard = ({ ComponentToMount }) => {
   return (
     <Container>
       <SideBar>
-        <Tabs>Profile</Tabs>
+        <Link to="/">
+          <Tabs>All Websites</Tabs>
+        </Link>
         <Link to="/recent">
           <Tabs>Recent History</Tabs>
         </Link>

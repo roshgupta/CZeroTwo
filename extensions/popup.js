@@ -1,3 +1,4 @@
-chrome.tabs.getCurrent(function (tab) {
-  alert(tab.title);
+chrome.storage.local.get(["visited"]).then((result) => {
+  console.log("Value currently is " + result.visited);
+  document.getElementById("mod").innerHTML = result.visited;
 });

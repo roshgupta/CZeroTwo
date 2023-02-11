@@ -5,6 +5,7 @@
   "permissions": [
     "activeTab",
     "tabs",
+    "storage",
     "webRequest"
   ],
   "background": {

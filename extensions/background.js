@@ -45,9 +45,33 @@ chrome.webRequest.onCompleted.addListener(
 
 chrome.windows.onRemoved.addListener((windowId) => {
   console.log("Closed window: " + windowId);
-
+  let visitedByUser=[]
+  chrome.storage.local.get(["visited"]).then((result) => {
+    visitedByUser=JSON.parse(result.visited);
+    });
+  
   // Make an API request here
+  console.log(visitedByUser)
+  fetch('http://localhost:5000/userlink/dum', {
+  method: 'POST',
+  body: {
+    visited:visitedByUser
+  },
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  }
+  })
+  .then((res)=>{
+    return res.json()
+  })
+  .then((data)=>{
+    console.log(data)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
 
   // after that clear local storage
+  chrome.storage.local.remove('visited')
 
 });

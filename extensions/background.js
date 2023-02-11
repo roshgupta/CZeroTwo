@@ -1,5 +1,6 @@
 let total = 0
 let vis = [{ url: "default", value: 0 }]
+let uservisit = [{ url: "default", value: 0 }]
 let curr_url;
 let curr_value;
 
@@ -35,27 +36,31 @@ chrome.webRequest.onCompleted.addListener(
 
     let filtered = vis.filter(function (el) {
       return el != null && el.url != "default" && el.url != "undefined" && el.url != "newtab" && el.url != undefined;
+
     });
     chrome.storage.local.set({ visited: JSON.stringify(filtered) });
+    uservisit=filtered;
 
   },
   { urls: ["<all_urls>"] },
   ["responseHeaders"]
 );
 
+
 chrome.windows.onRemoved.addListener((windowId) => {
   console.log("Closed window: " + windowId);
-  let visitedByUser=[]
-  chrome.storage.local.get(["visited"]).then((result) => {
-    visitedByUser=JSON.parse(result.visited);
-    });
+  
+  // let visitedByUser=[]
+  // chrome.storage.local.get(["visited"]).then((result) => {
+  //   visitedByUser=JSON.parse(result.visited);
+  //   });
   
   // Make an API request here
-  console.log(visitedByUser)
+  console.log(uservisit)
   fetch('http://localhost:5000/userlink/dum', {
   method: 'POST',
   body: {
-    visited:visitedByUser
+    visited:uservisit
   },
   headers: {
     'Content-type': 'application/json; charset=UTF-8',

@@ -6,11 +6,11 @@ const Link=require('../models/Link')
 
 const isAuthorised=require('../utils/isAuthorised')
 
-router.get('/test',isAuthorised,(req,res)=>{
+router.get('/test',isAuthorised,(req,res,next)=>{
     res.send("test")
 })
 
-router.get('/all/:id',isAuthorised,async(req,res)=>{
+router.get('/all/:id',isAuthorised,async(req,res,next)=>{
 
     const {id}=req.params
     const user=await User.findById(id)
@@ -25,11 +25,11 @@ router.get('/all/:id',isAuthorised,async(req,res)=>{
         arr.push(link)
     }
 
-    res.status(200).json({"success":true,payload:arr})
+    res.status(200).json({success:true,payload:arr})
 
 })
 
-router.post('/:id',async(req,res)=>{
+router.post('/:id',async(req,res,next)=>{
 
     const {id}=req.params
     const user=await User.findById(id);
@@ -43,10 +43,10 @@ router.post('/:id',async(req,res)=>{
     userlink.visit.push(linkbody._id)
     await userlink.save();
 
-    res.status(200).json({"success":true,message:"done"})
+    res.status(200).json({success:true,message:"done"})
 })
 
-router.get('/:date/:id',async(req,res)=>{
+router.get('/:date/:id',async(req,res,next)=>{
     const {date,id}=req.params;
 
     const user=await User.findById(id)

@@ -33,9 +33,12 @@ chrome.webRequest.onCompleted.addListener(
       vis.push({ url: curr_url, value: curr_value })
     }
 
-    console.log(vis)
-    chrome.storage.local.set({ visited: JSON.stringify(vis) }).then(() => {
-      console.log("Value is set to " + JSON.stringify(vis));
+    var filtered = vis.filter(function (el) {
+      return el != null && el.url != "default" && el.url != "undefined" && el.url != undefined;
+    });
+    console.log(filtered)
+    chrome.storage.local.set({ visited: JSON.stringify(filtered) }).then(() => {
+      console.log("Value is set to " + JSON.stringify(filtered));
     });
 
   },

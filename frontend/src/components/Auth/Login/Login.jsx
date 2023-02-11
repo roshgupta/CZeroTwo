@@ -1,10 +1,15 @@
+
 import React,{useState,useContext} from 'react'
 import axios from 'axios'
 import './Login.css'
 import { AuthContext } from '../../../App'
+
+
+
 function Login() {
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
 
   const {auth,setAuth}=useContext(AuthContext)
 
@@ -31,6 +36,7 @@ const formSubmit=(e)=>{
     console.log(err)
   })
 }
+
   return (
     <div>
       {!auth&& <h1>HEl</h1> }
@@ -38,18 +44,32 @@ const formSubmit=(e)=>{
         <h3>Login Here</h3>
 
         <label for="email">Email</label>
-        <input type="text" placeholder="Email" id="email" value={email} onChange={changeEmail} />
+        <input
+          type="text"
+          placeholder="Email"
+          id="email"
+          value={email}
+          onChange={changeEmail}
+        />
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" value={password} onChange={changePassword} />
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          value={password}
+          onChange={changePassword}
+        />
 
         <button>Log In</button>
         <div className="social">
-          <div className="go">Don't have an account? <u>Create Now.</u></div>
+          <div className="go">
+            Don't have an account? <u>Create Now.</u>
+          </div>
         </div>
       </form>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

@@ -4,7 +4,13 @@ const User=require('../models/user')
 const Userlink=require('../models/userlink')
 const Link=require('../models/Link')
 
-router.get('/all/:id',async(req,res)=>{
+const isAuthorised=require('../utils/isAuthorised')
+
+router.get('/test',isAuthorised,(req,res)=>{
+    res.send("test")
+})
+
+router.get('/all/:id',isAuthorised,async(req,res)=>{
 
     const {id}=req.params
     const user=await User.findById(id)

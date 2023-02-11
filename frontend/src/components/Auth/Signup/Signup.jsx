@@ -2,7 +2,7 @@ import React,{useState,useContext} from 'react'
 import './Signup.css'
 import axios from "axios"
 import { AuthContext } from '../../../App'
-import { useNavigation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 function Signup() {
 
   const [username,setUsername]=useState("")
@@ -10,7 +10,7 @@ function Signup() {
   const [password,setPassword]=useState("")
 
   const {auth,setAuth}=useContext(AuthContext)
-  const navigate=useNavigation()
+  const navigate=useNavigate()
 
   const changeUsername=(e)=>{
     setUsername(e.target.value)

@@ -11,6 +11,11 @@ router.get('/test',isAuthorised,(req,res,next)=>{
     res.send("test")
 })
 
+router.post('/dum',(req,res)=>{
+    console.log(req.body)
+    res.send("hi")
+})
+
 router.get('/all',isAuthorised,async(req,res,next)=>{
     try{
     
@@ -32,11 +37,9 @@ router.get('/all',isAuthorised,async(req,res,next)=>{
 catch(err){
     next(err)
 }
-
 })
 
 router.post('/',isAuthorised,async(req,res,next)=>{
-
     try{
         const id=req.user.id
     
@@ -58,7 +61,7 @@ router.post('/',isAuthorised,async(req,res,next)=>{
     }
 })
 
-router.get('/:date',isAuthorised,async(req,res,next)=>{
+router.get('/date/:date',isAuthorised,async(req,res,next)=>{
     try{
     const {date}=req.params;
     const id=req.user.id
@@ -84,6 +87,75 @@ catch(err){
 }
 })
 
+
+router.get('/top',isAuthorised,async(req,res,next)=>{
+    try{
+    const id=req.user.id
+    const user=await User.findById(id)
+    const ulinkid=user.userlink.toHexString()
+    const userlink=await Userlink.findById(ulinkid)
+
+    const visited=userlink.visit
+
+    const arr=[{url:"",value:0,carbon:0}]
+    for(let vis of visited){
+
+        const link=await Link.findById(vis.toHexString())
+        const vis_arr=link.visited
+        for(let it of vis_arr){
+            let f=1;
+            for(let ind of arr){
+                if(ind.url===it.url){
+                    f=0;
+                    ind.value=parseInt(ind.value)+parseInt(it.value)
+                    ind.carbon=parseInt(ind.carbon)+parseInt(it.carbon)
+                    break;
+                }
+            }
+            if(f==1){
+                arr.push(it);
+            }
+        }
+    }
+    res.status(200).json({arr})
+}
+catch(err){
+    next(err)
+}
+})
+
+router.get('/:url',isAuthorised,async(req,res,next)=>{
+try{
+    const {url}=req.params
+    const id=req.user.id
+    const user=await User.findById(id)
+    const ulinkid=user.userlink.toHexString()
+    const userlink=await Userlink.findById(ulinkid)
+
+    const visited=userlink.visit
+
+    let value=0;
+    let carbon=0;
+
+    for(let vis of visited){
+        const link=await Link.findById(vis.toHexString())
+        const vis_arr=link.visited
+        for(let it of vis_arr){
+            if(it.url===url){
+                value=parseInt(value)+parseInt(it.value)
+                carbon=parseInt(carbon)+parseInt(it.carbon)
+            }
+
+        }
+
+    }
+    res.status(200).json({success:true,value,carbon,url})
+}
+catch(err){
+    next(err)
+}
+
+})
 
 
 module.exports= router

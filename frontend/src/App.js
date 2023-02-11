@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Dashboard from './components/Dashboard'
 import Login from './components/Auth/Login/Login'
 import Signup from './components/Auth/Signup/Signup'
+import GreenServer from './components/GreenServers/GreenServer'
 import { useState } from 'react'
 import React from 'react'
 export const AuthContext = React.createContext(null)
@@ -16,13 +17,16 @@ function App() {
 
   return (
     <BrowserRouter>
+
       <AuthContext.Provider value={{ auth, setAuth }}>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/greenServer" element={<GreenServer />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
+
 
       </AuthContext.Provider>
       <Footer />

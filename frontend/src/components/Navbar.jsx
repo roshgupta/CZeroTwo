@@ -4,7 +4,12 @@ import styled from "styled-components";
 import { AuthContext } from "../App";
 
 function Navbar() {
-  const { auth } = useContext(AuthContext);
+  const { auth,setAuth } = useContext(AuthContext);
+
+const logout=()=>{
+  setAuth(false)
+  localStorage.removeItem("access_token")
+}
 
   return (
     <StyledNavbar>
@@ -21,11 +26,11 @@ function Navbar() {
         <Link className="nav-links" to="">
           Dashboard
         </Link>
-        <Link className="nav-links" to="">
-          About
+        <Link className="nav-links" to="/greenServer">
+          Green Servers
         </Link>
         <Link className="nav-links" to="">
-          Contact
+          About
         </Link>
       </Links>
       {!auth && (
@@ -34,6 +39,12 @@ function Navbar() {
           <Link to="/signup">Signup</Link>
         </LoginSignup>
       )}
+      {auth&&(
+        <LoginSignup>
+        <Link onClick={logout} to='/login'>Logout</Link>
+        </LoginSignup>
+      )
+      }
     </StyledNavbar>
   );
 }

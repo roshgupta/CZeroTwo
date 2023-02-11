@@ -3,6 +3,7 @@ const dontenv=require("dotenv");
 const connectToDB=require('./models/connectToMongoDB')
 const UserRoutes=require('./routes/user')
 const UserlinkRoutes=require('./routes/userlink')
+const apiRoutes=require('./routes/api')
 const cors=require('cors')
 
 const app=express()
@@ -13,6 +14,7 @@ app.use(express.json())
 
 app.use('/user',UserRoutes)
 app.use('/userlink',UserlinkRoutes)
+app.use('/api',apiRoutes)
 
 app.get('/test',(req,res)=>{
     res.send('hello')

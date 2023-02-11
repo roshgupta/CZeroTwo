@@ -20,9 +20,7 @@ function Navbar() {
             <p>CZeroTwo</p>
           </Link>
         </Logo>
-        <Link className="nav-links" to="">
-          Home
-        </Link>
+
         <Link className="nav-links" to="">
           Dashboard
         </Link>
@@ -90,7 +88,7 @@ const Links = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 35%;
+  width: 30%;
   .nav-links:hover {
     text-decoration: underline;
     transition: all 0.3s ease-in-out;

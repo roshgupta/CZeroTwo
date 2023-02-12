@@ -1,9 +1,19 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import axios from 'axios'
+import {MainContent,WebsitesData} from "./AllLinks"
+import IndividualWebsites from "../Dashboard/IndividualWebsites"
+import { AuthContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 function Recent() {
 
     const [datas,setDatas]=useState([])
+
+    const navigate = useNavigate();
+  const {auth}= useContext(AuthContext)
+  if(auth==false){
+    navigate('/login')
+  }
 
     useEffect(()=>{
 
@@ -25,28 +35,34 @@ function Recent() {
 
 
   return (
-    <div>
-      {datas&&datas.map((data)=>{
-        return (
-        <>
-        <div>
-            {data.date}
-        </div>
-        <div>
-            {data.visited.map((vis)=>{
-                return (
-                <>
-                <div>{vis.url}</div>
-                <div>{vis.value}</div>
-                <div>{vis.carbon}</div>
-                </>)
-            })}
-        </div>
-        </>)
-      })}
-
-    </div>
-  )
+    <MainContent>
+      {datas &&
+        datas.map((data) => {
+          return (
+            <ContentContainer>
+              <HeadText>Carbon footprint historyfor Date :{data.date}</HeadText>
+              <WebsitesData>
+                {data.visited.map((vis) => {
+                  return (
+                    <IndividualWebsites
+                      key={vis.url}
+                      data={vis}
+                      mostVisited={false}
+                    />
+                  );
+                })}
+              </WebsitesData>
+            </ContentContainer>
+          );
+        })}
+    </MainContent>
+  );
 }
-
-export default Recent
+const ContentContainer = styled.div`
+  width: 100%;
+`;
+const HeadText = styled.h2`
+  text-align: center;
+  color: white;
+`;
+export default Recent;

@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
 import styled from "styled-components";
 import IndividualWebsites from "../Dashboard/IndividualWebsites";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { AuthContext } from "../../App";
+import { useNavigate } from "react-router-dom";
+
 
 const AllLInks = () => {
   const [datas, setDatas] = useState(null);
   const [individual, setIndividual] = useState(null);
+
+  const navigate = useNavigate();
+  const {auth}= useContext(AuthContext)
+  if(auth==false){
+    navigate('/login')
+  }
 
   useEffect(() => {
     axios
@@ -95,11 +103,11 @@ const Header = styled.div`
     width: 70%;
   }
 `;
-const WebsitesData = styled.div`
+export const WebsitesData = styled.div`
   width: 100%;
 `;
 
-const MainContent = styled.main`
+export const MainContent = styled.main`
   width: 100%;
   padding: 32px;
   color: white;

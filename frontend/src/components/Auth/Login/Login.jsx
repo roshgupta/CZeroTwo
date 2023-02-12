@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   StyledForm,
@@ -17,6 +17,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const { auth, setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const changeEmail = (e) => {
     setEmail(e.target.value);
@@ -35,6 +36,7 @@ function Login() {
         if (res.data.success == true) {
           localStorage.setItem("access_token", res.data.access_token);
           setAuth(true);
+          navigate('/')
         }
       })
       .catch((err) => {

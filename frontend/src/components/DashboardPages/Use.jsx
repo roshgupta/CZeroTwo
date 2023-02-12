@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { AuthContext } from "../../App";
+import { useNavigate } from "react-router-dom";
+
 function Use() {
   const [url, setUrl] = useState("");
 
   const [data, setData] = useState(null);
+
+  const navigate = useNavigate();
+  const {auth}= useContext(AuthContext)
+  if(auth==false){
+    navigate('/login')
+  }
 
   const changeUrl = (e) => {
     setUrl(e.target.value);

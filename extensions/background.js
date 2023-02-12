@@ -60,7 +60,7 @@ chrome.windows.onRemoved.addListener((windowId) => {
   const token=chrome.storage.local.get("access_token")
   console.log(token)
 
-  fetch("http://localhost:5000/userlink/dum", {
+  fetch("http://localhost:5000/userlink/", {
     method: "POST",
      
     body: JSON.stringify({

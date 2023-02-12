@@ -16,7 +16,16 @@ export const AuthContext = React.createContext(null)
 
 function App() {
 
-  const [auth, setAuth] = useState(false)
+  let token=localStorage.getItem('access_token')
+  if(token==undefined){
+    token=false;
+  }
+  else{
+    token=true
+  }
+  const [auth, setAuth] = useState(token)
+
+  console.log(auth)
 
 
   return (

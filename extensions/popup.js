@@ -44,14 +44,14 @@ chrome.storage.local.get(["visited"]).then((result) => {
   }
   template += `
   <li class="view-more">
-  <div>View More</div>
+  <div>Visit Website</div>
   </li>`
   const websites = document.getElementById("websites");
   websites.innerHTML = template;
   const viewMore = document.getElementsByClassName("view-more")[0];
   viewMore.addEventListener("click", () => {
     //open a url in new tab
-    chrome.tabs.create({ url: "https://www.google.com" });
+    chrome.tabs.create({ url: "http://localhost:3000/login" });
     // enter url for the extension website
     // send all data to backend
 

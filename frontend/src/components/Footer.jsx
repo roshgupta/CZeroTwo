@@ -19,7 +19,7 @@ function Footer() {
           <Link to="/use">Domain Emission</Link>
         </Links>
         <Resources>
-          <Link to="">View on Github</Link>
+          <Link to="https://github.com/roshgupta/TRINIT-Team-team_DEV02">View on Github</Link>
         </Resources>
       </Container>
 

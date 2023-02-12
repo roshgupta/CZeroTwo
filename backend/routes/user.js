@@ -28,7 +28,7 @@ router.post('/signup',async(req,res,next)=>{
         const token= jwt.sign({id:user._id},"secret key")
         res
         .status(200)
-        .json({success:true,access_token:token})
+        .json({success:true,access_token:token,username:user.username})
     }
     catch(err){
         next(err)
@@ -56,7 +56,7 @@ router.post('/login',async(req,res,next)=>{
       const token= jwt.sign({id:user._id},"secret key")
       res
       .status(200)
-      .json({success:true,access_token:token})
+      .json({success:true,access_token:token,username:user.username})
     }
     catch(err){
         next(err)

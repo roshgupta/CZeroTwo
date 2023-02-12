@@ -9,6 +9,7 @@ function Navbar() {
   const logout = () => {
     setAuth(false);
     localStorage.removeItem("access_token");
+    localStorage.removeItem('username')
   };
 
   return (

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
+
 const Dashboard = ({ ComponentToMount }) => {
 
   const {auth}=useContext(AuthContext)
@@ -12,9 +13,15 @@ const Dashboard = ({ ComponentToMount }) => {
     navigate('/login')
   }
 
+  let username=null
+  username=localStorage.getItem('username')
+
   return (
     <Container>
       <SideBar>
+        <div>
+          {username&&( <h2>Hey {username}</h2> )}
+        </div>
         <Link to="/">
           <Tabs>All Websites</Tabs>
         </Link>

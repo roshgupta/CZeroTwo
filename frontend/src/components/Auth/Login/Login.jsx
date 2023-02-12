@@ -19,6 +19,8 @@ function Login() {
   const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
+      console.log(auth)
+
   const changeEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -35,6 +37,7 @@ function Login() {
       .then((res) => {
         if (res.data.success == true) {
           localStorage.setItem("access_token", res.data.access_token);
+          localStorage.setItem('username',res.data.username)
           setAuth(true);
           navigate('/')
         }

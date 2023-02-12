@@ -51,7 +51,7 @@ chrome.storage.local.get(["visited"]).then((result) => {
   const viewMore = document.getElementsByClassName("view-more")[0];
   viewMore.addEventListener("click", () => {
     //open a url in new tab
-    chrome.tabs.create({ url: "http://localhost:3000/login" });
+    chrome.tabs.create({ url: "http://localhost:3000" });
     // enter url for the extension website
     // send all data to backend
 

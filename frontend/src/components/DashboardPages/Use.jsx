@@ -134,7 +134,7 @@ const StyledButton = styled.button`
 `;
 const InnerContainer = styled.div`
   min-height: 300px;
-  width: 500px;
+  width: 650px;
   margin-top: 32px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.03);

@@ -105,7 +105,7 @@ router.get('/top',isAuthorised,async(req,res,next)=>{
 
     const visited=userlink.visit
 
-    const arr=[{url:"",value:0,carbon:0}]
+    const arr=[{url:"home page",value:0,carbon:0}]
     for(let vis of visited){
 
         const link=await Link.findById(vis.toHexString())

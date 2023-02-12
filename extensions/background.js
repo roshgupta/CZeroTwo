@@ -28,6 +28,7 @@ chrome.webRequest.onCompleted.addListener(
       if (ind.url === curr_url) {
         f = 0;
         ind.value = parseInt(ind.value) + parseInt(curr_value);
+        ind.carbon=((ind.value  * 1024.45483) * (10 ** -11)).toFixed(5)
       }
     }
     if (f == 1) {

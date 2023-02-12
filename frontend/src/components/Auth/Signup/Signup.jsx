@@ -20,7 +20,9 @@ function Signup() {
 
   const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  if(auth==true){
+    navigate('/')
+  }
   const changeUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -42,6 +44,7 @@ function Signup() {
       .then((res) => {
         if (res.data.success == true) {
           localStorage.setItem("access_token", res.data.access_token);
+          localStorage.setItem('username',res.data.username)
           setAuth(true);
           navigate("/");
         }

@@ -50,7 +50,7 @@ const AllLInks = () => {
           </div>
           <Overall>
             <div className="circle">
-              <span className="data">{(total/1024).toFixed(2)}</span>
+              <span className="data">{(total/(1024*1024)).toFixed(4)}</span>
               <span>MB</span>
             </div>
             <p>Overall usages</p>

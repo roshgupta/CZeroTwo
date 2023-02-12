@@ -4,7 +4,7 @@ import {MainContent,WebsitesData} from "./AllLinks"
 import IndividualWebsites from "../Dashboard/IndividualWebsites"
 import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
-
+import styled from 'styled-components'
 function Recent() {
 
     const [datas,setDatas]=useState([])
@@ -40,7 +40,7 @@ function Recent() {
         datas.map((data) => {
           return (
             <ContentContainer>
-              <HeadText>Carbon footprint historyfor Date :{data.date}</HeadText>
+              <HeadText>Carbon footprint historyfor Date :{data.date.split('T')[0]}</HeadText>
               <WebsitesData>
                 {data.visited.map((vis) => {
                   return (
@@ -62,7 +62,6 @@ const ContentContainer = styled.div`
   width: 100%;
 `;
 const HeadText = styled.h2`
-  text-align: center;
   color: white;
 `;
 export default Recent;

@@ -18,29 +18,28 @@ function Use() {
   const changeUrl = (e) => {
     setUrl(e.target.value);
   };
-  const formSubmit = (e) => {
-    e.preventDeafult();
-    console.log(url);
-    axios
-      .get(`http://localhost:5000/userlink/${url}`, {
+
+  const formSubmit_=(e)=>{
+    e.preventDefault()
+    axios.get(`http://localhost:5000/userlink/${url}`,{
         headers: {
           access_token: localStorage.getItem("access_token"),
         },
       })
       .then((res) => {
         console.log(res);
-        setData(res);
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  };
+  }
 
   return (
     <Container>
       <Header>Check out how much carbon was used by you</Header>
       <InnerContainer>
-        <form onSubmit={formSubmit} action="">
+        <form onSubmit={formSubmit_} action="">
           <StyledLabel htmlFor="">Type domain name</StyledLabel>
           <StyledInput
             type="text"

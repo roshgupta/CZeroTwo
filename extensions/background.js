@@ -1,6 +1,6 @@
 let total = 0
-let vis = [{ url: "default", value: 0 }]
-let uservisit = [{ url: "default", value: 0 }]
+let vis = [{ url: "default", value: 0 ,carbon:0}]
+let uservisit = [{ url: "default", value: 0 ,carbon:0}]
 let curr_url;
 let curr_value;
 
@@ -31,13 +31,14 @@ chrome.webRequest.onCompleted.addListener(
       }
     }
     if (f == 1) {
-      vis.push({ url: curr_url, value: curr_value })
+      vis.push({ url: curr_url, value: curr_value,carbon: ((curr_value  * 1024.45483) * (10 ** -11)).toFixed(5)})
     }
 
     let filtered = vis.filter(function (el) {
       return el != null && el.url != "default" && el.url != "undefined" && el.url != "newtab" && el.url != undefined;
 
     });
+  
     chrome.storage.local.set({ visited: JSON.stringify(filtered) });
     uservisit=filtered;
 

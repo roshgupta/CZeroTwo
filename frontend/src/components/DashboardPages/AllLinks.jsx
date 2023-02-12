@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const AllLInks = () => {
   const [datas, setDatas] = useState(null);
   const [individual, setIndividual] = useState(null);
+  const [total,setTotal]=useState(null)
 
   const navigate = useNavigate();
   const {auth}= useContext(AuthContext)
@@ -27,6 +28,7 @@ const AllLInks = () => {
         console.log(res);
         setDatas(res.data.arr);
         setIndividual(res.data.arr[0]);
+        setTotal(res.data.tot)
       })
       .catch((err) => {
         console.log(err);
@@ -48,7 +50,7 @@ const AllLInks = () => {
           </div>
           <Overall>
             <div className="circle">
-              <span className="data">2343</span>
+              <span className="data">{(total/1024).toFixed(2)}</span>
               <span>MB</span>
             </div>
             <p>Overall usages</p>

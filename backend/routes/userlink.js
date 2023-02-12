@@ -97,6 +97,7 @@ catch(err){
 
 router.get('/top',isAuthorised,async(req,res,next)=>{
     try{
+    let tot=0;
     const id=req.user.id
     const user=await User.findById(id)
     const ulinkid=user.userlink.toHexString()
@@ -110,6 +111,7 @@ router.get('/top',isAuthorised,async(req,res,next)=>{
         const link=await Link.findById(vis.toHexString())
         const vis_arr=link.visited
         for(let it of vis_arr){
+            tot=parseInt(tot)+parseInt(it.value)
             let f=1;
             for(let ind of arr){
                 if(ind.url===it.url){
@@ -127,7 +129,7 @@ router.get('/top',isAuthorised,async(req,res,next)=>{
 
     arr.sort((a, b) => parseInt(a.value) > parseInt(b.value) ? -1 : 1);
 
-    res.status(200).json({arr})
+    res.status(200).json({arr,tot})
 }
 catch(err){
     next(err)
@@ -137,6 +139,7 @@ catch(err){
 router.get('/:url',isAuthorised,async(req,res,next)=>{
 try{
     const {url}=req.params
+    console.log(url)
     const id=req.user.id
     const user=await User.findById(id)
     const ulinkid=user.userlink.toHexString()

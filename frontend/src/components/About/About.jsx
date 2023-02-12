@@ -26,7 +26,7 @@ const About = () => {
           }
           name={"Sharique Nadim"}
           title={"Developer and Designer"}
-          email={"sharique@gmail.com"}
+          email={"contact@shariquenadim.tk"}
         />
         <Card
           src={
@@ -34,7 +34,7 @@ const About = () => {
           }
           name={"Aneesh Kulkarni"}
           title={"Developer and Designer"}
-          email={"aneesh@gmail.com"}
+          email={"aneesh0224@gmail.com"}
         />
       </CardContainer>
     </Container>

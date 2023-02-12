@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
@@ -6,22 +6,19 @@ import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({ ComponentToMount }) => {
-
-  const {auth}=useContext(AuthContext)
+  const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
-  if(auth==false){
-    navigate('/login')
+  if (auth == false) {
+    navigate("/login");
   }
 
-  let username=null
-  username=localStorage.getItem('username')
+  let username = null;
+  username = localStorage.getItem("username");
 
   return (
     <Container>
       <SideBar>
-        <div>
-          {username&&( <h2>Hey {username}</h2> )}
-        </div>
+        <HelloTitle>{username && <h2>Hey {username}</h2>}</HelloTitle>
         <Link to="/">
           <Tabs>All Websites</Tabs>
         </Link>
@@ -48,6 +45,9 @@ const Container = styled.div`
   font-family: "Poppins", sans-serif;
 `;
 
+const HelloTitle = styled.h2`
+  color: #fff;
+`;
 const SideBar = styled.aside`
   background-color: #0d8b5a;
   width: 100%;

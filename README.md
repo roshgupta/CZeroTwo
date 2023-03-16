@@ -1,6 +1,6 @@
-# TRINIT_Team_team_DEV02
+# CZeroTwo
 
-## CTwoZero - A website and extension to track carbon emission through various websites.
+## CZeroTwo - A website and extension to track carbon emission through various websites.
 
 ## Implements lots of features such as:
 - User can install the extension, as soon as extension is installed it will start tracking data emission caused by visiting a website.

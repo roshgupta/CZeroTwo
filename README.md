@@ -2,6 +2,8 @@
 
 ## CZeroTwo - A website and extension to track carbon emission through various websites.
 
+Demo Video: https://drive.google.com/file/d/1V-AGWYdRZSS1zVuS7cRyrr59EtGDRAcp/view?usp=sharing
+
 ## Implements lots of features such as:
 - User can install the extension, as soon as extension is installed it will start tracking data emission caused by visiting a website.
 - User can go to website and Login/Signup as personal account and his data from chrome extension will appear on website.
